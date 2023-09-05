@@ -1,0 +1,29 @@
+server:
+  port: 8008
+#  servlet:
+#    encoding:
+#      force-response: true
+#    session:
+#      timeout: PT60S
+#    context-path: ''
+
+spring:
+  datasource:
+    username: root
+    password: ahu=2018
+    url: jdbc:mysql://60.205.124.179:3306/red_carp
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#  redis:
+#    host: 60.205.124.179
+#    port: 6379
+#    password: a@h#u=2018
+#  aop:
+#    proxy-target-class: true
+#  session:
+#    store-type: redis
+#    redis:
+#      flush-mode: on_save
+#      namespace: wuzhong:session
+#  jackson:
+#    date-format: yyyy-mm-dd HH:mm:ss
+

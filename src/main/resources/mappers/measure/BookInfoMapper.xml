@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fish.rpm.measure.BookInfoMapper">
+  <resultMap id="BaseResultMap" type="com.fish.dao.domain.BookInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="author_id" jdbcType="BIGINT" property="authorId" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="ctime" jdbcType="TIMESTAMP" property="ctime" />
+    <result column="mtime" jdbcType="TIMESTAMP" property="mtime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.fish.dao.domain.BookInfo">
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, type, name, author_id, author, status, ctime, mtime
+  </sql>
+  <sql id="Blob_Column_List">
+    description
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.fish.dao.domain.BookInfoExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from book_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.fish.dao.domain.BookInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from book_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from book_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from book_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fish.dao.domain.BookInfoExample">
+    delete from book_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fish.dao.domain.BookInfo">
+    insert into book_info (id, type, name, 
+      author_id, author, status, 
+      ctime, mtime, description
+      )
+    values (#{id,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{authorId,jdbcType=BIGINT}, #{author,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
+      #{ctime,jdbcType=TIMESTAMP}, #{mtime,jdbcType=TIMESTAMP}, #{description,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fish.dao.domain.BookInfo">
+    insert into book_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="authorId != null">
+        author_id,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="ctime != null">
+        ctime,
+      </if>
+      <if test="mtime != null">
+        mtime,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="authorId != null">
+        #{authorId,jdbcType=BIGINT},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="ctime != null">
+        #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mtime != null">
+        #{mtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fish.dao.domain.BookInfoExample" resultType="java.lang.Long">
+    select count(*) from book_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update book_info
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.type != null">
+        type = #{row.type,jdbcType=INTEGER},
+      </if>
+      <if test="row.name != null">
+        name = #{row.name,jdbcType=VARCHAR},
+      </if>
+      <if test="row.authorId != null">
+        author_id = #{row.authorId,jdbcType=BIGINT},
+      </if>
+      <if test="row.author != null">
+        author = #{row.author,jdbcType=VARCHAR},
+      </if>
+      <if test="row.status != null">
+        status = #{row.status,jdbcType=TINYINT},
+      </if>
+      <if test="row.ctime != null">
+        ctime = #{row.ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.mtime != null">
+        mtime = #{row.mtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.description != null">
+        description = #{row.description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update book_info
+    set id = #{row.id,jdbcType=BIGINT},
+      type = #{row.type,jdbcType=INTEGER},
+      name = #{row.name,jdbcType=VARCHAR},
+      author_id = #{row.authorId,jdbcType=BIGINT},
+      author = #{row.author,jdbcType=VARCHAR},
+      status = #{row.status,jdbcType=TINYINT},
+      ctime = #{row.ctime,jdbcType=TIMESTAMP},
+      mtime = #{row.mtime,jdbcType=TIMESTAMP},
+      description = #{row.description,jdbcType=LONGVARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update book_info
+    set id = #{row.id,jdbcType=BIGINT},
+      type = #{row.type,jdbcType=INTEGER},
+      name = #{row.name,jdbcType=VARCHAR},
+      author_id = #{row.authorId,jdbcType=BIGINT},
+      author = #{row.author,jdbcType=VARCHAR},
+      status = #{row.status,jdbcType=TINYINT},
+      ctime = #{row.ctime,jdbcType=TIMESTAMP},
+      mtime = #{row.mtime,jdbcType=TIMESTAMP}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fish.dao.domain.BookInfo">
+    update book_info
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="authorId != null">
+        author_id = #{authorId,jdbcType=BIGINT},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="ctime != null">
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mtime != null">
+        mtime = #{mtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fish.dao.domain.BookInfo">
+    update book_info
+    set type = #{type,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      author_id = #{authorId,jdbcType=BIGINT},
+      author = #{author,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      mtime = #{mtime,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fish.dao.domain.BookInfo">
+    update book_info
+    set type = #{type,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      author_id = #{authorId,jdbcType=BIGINT},
+      author = #{author,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      mtime = #{mtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
