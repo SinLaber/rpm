@@ -2,12 +2,9 @@ package com.fish.rpm.dao.measure;
 
 import com.fish.rpm.dao.domain.BookInfo;
 import com.fish.rpm.dao.domain.BookInfoExample;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
-
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BookInfoMapper {

@@ -57,7 +57,7 @@
         </javaTypeResolver>
 
         <!-- 生成实体类地址 -->
-        <javaModelGenerator targetPackage="com.fish.rpm.domain" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.fish.rpm.dao.domain" targetProject="src/main/java">
             <!-- 是否让 schema 作为包的后缀，默认为false -->
             <!--<property name="enableSubPackages" value="false"/>-->
             <!-- 是否针对string类型的字段在set方法中进行修剪，默认false -->
@@ -66,13 +66,13 @@
 
 
         <!-- 生成Mapper.xml文件 -->
-        <sqlMapGenerator targetPackage="com.fish.rpm.mapper" targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="mappers.measure" targetProject="src/main/resources">
             <!--<property name="enableSubPackages" value="false"/>-->
         </sqlMapGenerator>
 
 
         <!-- 生成 XxxMapper.java 接口-->
-        <javaClientGenerator targetPackage="com.fish.rpm.measure" targetProject="src/main/java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="com.fish.rpm.dao.measure" targetProject="src/main/java" type="XMLMAPPER">
             <!--<property name="enableSubPackages" value="false"/>-->
         </javaClientGenerator>
 

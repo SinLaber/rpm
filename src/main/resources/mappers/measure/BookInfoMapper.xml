@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fish.rpm.measure.BookInfoMapper">
-  <resultMap id="BaseResultMap" type="com.fish.dao.domain.BookInfo">
+<mapper namespace="com.fish.rpm.dao.measure.BookInfoMapper">
+  <resultMap id="BaseResultMap" type="com.fish.rpm.dao.domain.BookInfo">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="type" jdbcType="INTEGER" property="type" />
     <result column="name" jdbcType="VARCHAR" property="name" />
@@ -11,7 +11,7 @@
     <result column="ctime" jdbcType="TIMESTAMP" property="ctime" />
     <result column="mtime" jdbcType="TIMESTAMP" property="mtime" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.fish.dao.domain.BookInfo">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.fish.rpm.dao.domain.BookInfo">
     <result column="description" jdbcType="LONGVARCHAR" property="description" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -78,7 +78,7 @@
   <sql id="Blob_Column_List">
     description
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.fish.dao.domain.BookInfoExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="com.fish.rpm.dao.domain.BookInfoExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -95,7 +95,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.fish.dao.domain.BookInfoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.fish.rpm.dao.domain.BookInfoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -122,13 +122,13 @@
     delete from book_info
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fish.dao.domain.BookInfoExample">
+  <delete id="deleteByExample" parameterType="com.fish.rpm.dao.domain.BookInfoExample">
     delete from book_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fish.dao.domain.BookInfo">
+  <insert id="insert" parameterType="com.fish.rpm.dao.domain.BookInfo">
     insert into book_info (id, type, name, 
       author_id, author, status, 
       ctime, mtime, description
@@ -138,7 +138,7 @@
       #{ctime,jdbcType=TIMESTAMP}, #{mtime,jdbcType=TIMESTAMP}, #{description,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.fish.dao.domain.BookInfo">
+  <insert id="insertSelective" parameterType="com.fish.rpm.dao.domain.BookInfo">
     insert into book_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -199,7 +199,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fish.dao.domain.BookInfoExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.fish.rpm.dao.domain.BookInfoExample" resultType="java.lang.Long">
     select count(*) from book_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -269,7 +269,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fish.dao.domain.BookInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.fish.rpm.dao.domain.BookInfo">
     update book_info
     <set>
       <if test="type != null">
@@ -299,7 +299,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fish.dao.domain.BookInfo">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fish.rpm.dao.domain.BookInfo">
     update book_info
     set type = #{type,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
@@ -311,7 +311,7 @@
       description = #{description,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fish.dao.domain.BookInfo">
+  <update id="updateByPrimaryKey" parameterType="com.fish.rpm.dao.domain.BookInfo">
     update book_info
     set type = #{type,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
