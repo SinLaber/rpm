@@ -4,9 +4,11 @@ import com.fish.rpm.dao.domain.BookInfo;
 import com.fish.rpm.dao.domain.BookInfoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Mapper
 public interface BookInfoMapper {
     long countByExample(BookInfoExample example);
 

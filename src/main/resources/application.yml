@@ -11,7 +11,7 @@ spring:
   datasource:
     username: root
     password: ahu=2018
-    url: jdbc:mysql://60.205.124.179:3306/red_carp
+    url: jdbc:mysql://60.205.124.179:3306/red_carp?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
     driver-class-name: com.mysql.cj.jdbc.Driver
 #  redis:
 #    host: 60.205.124.179
@@ -27,3 +27,11 @@ spring:
 #  jackson:
 #    date-format: yyyy-mm-dd HH:mm:ss
 
+mybatis:
+  mapper-locations: classpath:measure/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  level:
+    root: info

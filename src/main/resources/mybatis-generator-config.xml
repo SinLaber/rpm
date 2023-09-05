@@ -66,7 +66,7 @@
 
 
         <!-- 生成Mapper.xml文件 -->
-        <sqlMapGenerator targetPackage="mappers.measure" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="mappers" targetProject="src/main/resources">
             <!--<property name="enableSubPackages" value="false"/>-->
         </sqlMapGenerator>
 

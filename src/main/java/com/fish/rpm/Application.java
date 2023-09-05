@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("com.fish.rpm.dao.measure")
-public class RpmApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(RpmApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.fish.rpm.controller;
 
-import com.fish.rpm.service.BookInfoService;
+import com.fish.rpm.dao.util.ResultResp;
+import com.fish.rpm.service.DemoService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -9,14 +10,14 @@ import javax.annotation.Resource;
 @RequestMapping("/demo")
 public class DemoController {
     @Resource
-    public BookInfoService bookInfoService;
+    public DemoService demoService;
 
     @PostMapping ( "/queryReq")
-    public int queryReq(){
+    public ResultResp queryReq(){
         try {
-            return bookInfoService.queryBooKListCount();
+            return demoService.demoQuery();
         }catch (Exception e){
-            return 0;
+            return ResultResp.respFailed(e.getMessage());
         }
     }
 }
