@@ -5,5 +5,5 @@ import com.fish.rpm.dao.util.ResultResp;
 
 public interface DemoService {
 
-    ResultResp demoQuery();
+    ResultResp demoQuery(Integer id);
 }

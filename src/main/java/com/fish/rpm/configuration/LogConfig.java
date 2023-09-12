@@ -22,7 +22,7 @@ public class LogConfig implements HandlerInterceptor {
             MDC.clear();
             String logId = request.getHeader(Constants.LOG_ID);
             String ucId = request.getHeader(Constants.UC_ID);
-            MDC.put(Constants.LOG_ID, StringUtils.isNotBlank(logId) ? logId : "wuzhong_" + UUID.randomUUID().toString().replace("-", ""));
+            MDC.put(Constants.LOG_ID, StringUtils.isNotBlank(logId) ? logId : "rpm_" + UUID.randomUUID().toString().replace("-", ""));
             MDC.put(Constants.UC_ID, StringUtils.isBlank(ucId) ? (StringUtils.isNotBlank(logId) ? logId.split("_")[0] : "未知"): ucId);
             MDC.put(Constants.OCCUR, String.valueOf(System.currentTimeMillis()));
         } catch (Exception e) {
