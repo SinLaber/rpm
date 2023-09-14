@@ -9,7 +9,6 @@
     </parent>
     <groupId>com.fish</groupId>
     <artifactId>rpm</artifactId>
-    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>rpm</name>
     <description>rpm</description>
@@ -89,7 +88,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.7.16-SNAPSHOT</version>
+                <version>2.7.14</version>
                 <configuration>
                     <excludes>
                         <exclude>
