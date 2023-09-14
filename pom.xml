@@ -10,6 +10,7 @@
     </parent>
     <groupId>com.fish</groupId>
     <artifactId>rpm</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>rpm</name>
     <description>rpm</description>
