@@ -1,8 +1,7 @@
 package com.fish.rpm.aspect;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.filter.SimplePropertyPreFilter;
 import com.fish.rpm.dao.util.Constants;
 import com.fish.rpm.dao.util.LogInfoUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -16,8 +15,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * @author Bin
@@ -28,8 +25,6 @@ import java.util.List;
 @Component
 public class AopLog {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    private final List<String> APPKEY_LIST = Collections.singletonList("admin");
 
     ThreadLocal<Long> startTime = new ThreadLocal<>();
 
@@ -79,7 +74,7 @@ public class AopLog {
     }
 
     public void checkAppKey(String appKey) {
-        if(!APPKEY_LIST.contains(appKey)) {
+        if(!Constants.APPKEY_LIST.contains(appKey)) {
             throw new IllegalArgumentException("appKey Failed!");
         }
     }

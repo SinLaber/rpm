@@ -1,5 +1,7 @@
 package com.fish.rpm.dao.util;
 
+import okhttp3.MediaType;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -28,4 +30,12 @@ public class Constants {
     public static final long DISABLED = -1001;
 
     public static final String UUID_VERIFY_SIGN = "UUID_VERIFY_SIGN";
+
+    public static final List<String> APPKEY_LIST = Collections.singletonList("admin");
+
+    public static final MediaType JSON_TYPE = MediaType.parse("application/json; charset=utf-8");
+
+    public static final MediaType XML = MediaType.parse("application/xml; charset=utf-8");
+
+    public static final String HTTPS_URL = "https://my-json-server.typicode.com/typicode/demo/";
 }

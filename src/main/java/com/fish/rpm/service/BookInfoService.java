@@ -3,7 +3,7 @@ package com.fish.rpm.service;
 
 import com.fish.rpm.dao.util.ResultResp;
 
-public interface DemoService {
+public interface BookInfoService {
 
-    ResultResp demoQuery(Integer id);
+    ResultResp queryBookInfo(Integer id);
 }
