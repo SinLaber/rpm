@@ -1,5 +1,5 @@
 server:
-  port: 8008
+  port: 80
 #  servlet:
 #    encoding:
 #      force-response: true
