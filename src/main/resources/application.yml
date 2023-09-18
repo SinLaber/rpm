@@ -16,7 +16,7 @@ spring:
   redis:
     host: 60.205.124.179
     port: 6379
-    password: ahu=2018
+    password: ahu=20181
 #  aop:
 #    proxy-target-class: true
 #  session:
